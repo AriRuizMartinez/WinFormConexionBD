@@ -37,7 +37,8 @@ namespace WinFormConexionBD.DAL
                 }
 
                 string query = "INSERT INTO employees(first_name, last_name, email, phone_number, hire_date, job_id, salary) " +
-                    "VALUES (@firstName, @lastName, @email, @phone, @hireDate, @jobId, @salary);";
+                    "VALUES (@firstName, @lastName, @email, @phone, @hireDate, @jobId, @salary);" +
+                    "SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, conexionBD.Conexion))
                 {
@@ -50,7 +51,8 @@ namespace WinFormConexionBD.DAL
                     command.Parameters.AddWithValue("@salary", employee.Salary);
 
 
-                    command.ExecuteNonQuery();
+                    decimal result = (decimal)command.ExecuteScalar();
+                    employee.Id = Convert.ToInt32(result);
                 }
             }
             catch (Exception ex)

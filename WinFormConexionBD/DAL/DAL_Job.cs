@@ -28,7 +28,8 @@ namespace WinFormConexionBD
                 }
 
                 string query = "INSERT INTO jobs(job_title, min_salary, max_salary) " +
-                    "VALUES (@title, @min, @max);";
+                    "VALUES (@title, @min, @max);" +
+                    "SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, conexionBD.Conexion))
                 {
@@ -36,12 +37,13 @@ namespace WinFormConexionBD
                     command.Parameters.AddWithValue("@min", NullToDBNull(job.MinSalary));
                     command.Parameters.AddWithValue("@max", NullToDBNull(job.MaxSalary));
 
-                    command.ExecuteNonQuery();
+                    decimal result = (decimal)command.ExecuteScalar();
+                    job.Id = Convert.ToInt32(result);
                 }
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Error: " + ex.Message);
             }
             finally
             {

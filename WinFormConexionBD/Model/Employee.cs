@@ -9,7 +9,7 @@ namespace WinFormConexionBD.Model
     public class Employee
     {
         private int id;
-        public int Id { get { return id; } }
+        public int Id { get { return id; } set { id = value} }
 
         private string first_name;
         public string First_name { get {  return first_name; } }
