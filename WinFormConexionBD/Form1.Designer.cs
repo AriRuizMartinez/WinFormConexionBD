@@ -32,6 +32,10 @@
             this.SelectJobBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UpdateBtn = new System.Windows.Forms.Button();
+            this.UpdateEmployeeBtn = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.SelectEmployeeBtn = new System.Windows.Forms.Button();
+            this.NewEmployeeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewJobBtn
@@ -68,15 +72,54 @@
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(193, 23);
             this.UpdateBtn.TabIndex = 7;
-            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.Text = "Update job";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
+            // 
+            // UpdateEmployeeBtn
+            // 
+            this.UpdateEmployeeBtn.Location = new System.Drawing.Point(282, 138);
+            this.UpdateEmployeeBtn.Name = "UpdateEmployeeBtn";
+            this.UpdateEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.UpdateEmployeeBtn.TabIndex = 11;
+            this.UpdateEmployeeBtn.Text = "Update employee";
+            this.UpdateEmployeeBtn.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(282, 96);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(193, 24);
+            this.comboBox2.TabIndex = 10;
+            // 
+            // SelectEmployeeBtn
+            // 
+            this.SelectEmployeeBtn.Location = new System.Drawing.Point(282, 56);
+            this.SelectEmployeeBtn.Name = "SelectEmployeeBtn";
+            this.SelectEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.SelectEmployeeBtn.TabIndex = 9;
+            this.SelectEmployeeBtn.Text = "Select employees";
+            this.SelectEmployeeBtn.UseVisualStyleBackColor = true;
+            // 
+            // NewEmployeeBtn
+            // 
+            this.NewEmployeeBtn.Location = new System.Drawing.Point(282, 27);
+            this.NewEmployeeBtn.Name = "NewEmployeeBtn";
+            this.NewEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.NewEmployeeBtn.TabIndex = 8;
+            this.NewEmployeeBtn.Text = "New Employee";
+            this.NewEmployeeBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 450);
+            this.ClientSize = new System.Drawing.Size(523, 220);
+            this.Controls.Add(this.UpdateEmployeeBtn);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.SelectEmployeeBtn);
+            this.Controls.Add(this.NewEmployeeBtn);
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.SelectJobBtn);
@@ -92,6 +135,10 @@
         private System.Windows.Forms.Button SelectJobBtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button UpdateBtn;
+        private System.Windows.Forms.Button UpdateEmployeeBtn;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button SelectEmployeeBtn;
+        private System.Windows.Forms.Button NewEmployeeBtn;
     }
 }
 
