@@ -36,7 +36,10 @@ namespace WinFormConexionBD
             if (!valido)
                 return;
 
-            job = new Job(job.Id, textBox1.Text, GetDecimalValue(MinSalatyTextBox.Text), GetDecimalValue(MaxSalaryTextBox.Text));
+            if(job != null)
+                job = new Job(job.Id, textBox1.Text, GetDecimalValue(MinSalatyTextBox.Text), GetDecimalValue(MaxSalaryTextBox.Text));
+            else                
+                job = new Job(textBox1.Text, GetDecimalValue(MinSalatyTextBox.Text), GetDecimalValue(MaxSalaryTextBox.Text));
 
             this.DialogResult = DialogResult.OK;
             this.Close();
