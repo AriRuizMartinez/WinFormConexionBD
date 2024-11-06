@@ -54,12 +54,19 @@
     <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Form\NewJobForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\NewJobForm.Designer.cs">
       <DependentUpon>NewJobForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\NewEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\NewEmployeeForm.Designer.cs">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
