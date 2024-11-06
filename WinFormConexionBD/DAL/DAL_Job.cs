@@ -39,6 +39,7 @@ namespace WinFormConexionBD
 
                     decimal result = (decimal)command.ExecuteScalar();
                     job.Id = Convert.ToInt32(result);
+                    MessageBox.Show("El id es " + job.Id);
                 }
             }
             catch (Exception ex)
@@ -99,6 +100,45 @@ namespace WinFormConexionBD
                 conexionBD.Close();
             }
 
+        }
+
+        public Job SelectJob(int id)
+        {
+            try
+            {
+                if (!conexionBD.Open())
+                {
+                    MessageBox.Show("Ha habido un problema.");
+                    return null;
+                }
+
+                string query = "SELECT * FROM jobs WHERE job_id = " + id + ";";
+                SqlCommand command = new SqlCommand(query, conexionBD.Conexion);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                Job job = null;
+
+                while (reader.Read())
+                {
+                    int jobId = reader.GetInt32(0);
+                    string jobTitle = reader.GetString(1);
+                    decimal? min = reader.IsDBNull(2) ? (decimal?)null : reader.GetDecimal(2);
+                    decimal? max = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
+
+                    job = new Job(jobId, jobTitle, min, max);
+                }
+                reader.Close();
+                return job;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
         }
 
         internal void UpdateJob(Job job)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormConexionBD.DAL;
+using WinFormConexionBD.Model;
 
 namespace WinFormConexionBD
 {
@@ -15,13 +16,13 @@ namespace WinFormConexionBD
     {
         NewJobForm newJobForm;
         NewEmployeeForm newEmployeeForm;
-        DAL_Job DAL_Job;
-        DAL_Employee DAL_Employee;
+        DAL_Job dal_job;
+        DAL_Employee dal_employee;
         public Form1()
         {
             InitializeComponent();
-            DAL_Job = new DAL_Job();
-            DAL_Employee = new DAL_Employee();
+            dal_job = new DAL_Job();
+            dal_employee = new DAL_Employee();
         }
 
         private void NewJobBtn_Click(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace WinFormConexionBD
             newJobForm = new NewJobForm();
             if (newJobForm.ShowDialog() == DialogResult.OK)
             {
-                DAL_Job.InsertJob(newJobForm.JobProperty);
+                dal_job.InsertJob(newJobForm.JobProperty);
                 UpdateComboBox();
             }
         }
@@ -44,7 +45,7 @@ namespace WinFormConexionBD
             newJobForm = new NewJobForm((Job)comboBox1.SelectedItem);
             if (newJobForm.ShowDialog() == DialogResult.OK)
             {
-                DAL_Job.UpdateJob(newJobForm.JobProperty);
+                dal_job.UpdateJob(newJobForm.JobProperty);
                 UpdateComboBox();
             }
 
@@ -52,18 +53,29 @@ namespace WinFormConexionBD
         }
         private void UpdateComboBox()
         {
-            List<Job> jobs = DAL_Job.SelectJobs();
+            List<Job> jobs = dal_job.SelectJobs();
             comboBox1.DataSource = jobs;
+        }
+
+        private void UpdateComboBoxEmployees()
+        {
+            List<Employee> employees = dal_employee.SelectEmployees(dal_job);
+            comboBoxEmployees.DataSource = employees;
         }
 
         private void NewEmployeeBtn_Click(object sender, EventArgs e)
         {
-            newEmployeeForm = new NewEmployeeForm(DAL_Job.SelectJobs());
+            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs());
             if (newEmployeeForm.ShowDialog() == DialogResult.OK)
             {
-                DAL_Employee.InsertEmployee(newEmployeeForm.EmployeeProperty);
-
+                dal_employee.InsertEmployee(newEmployeeForm.EmployeeProperty);
+                UpdateComboBoxEmployees();
             }
+        }
+
+        private void SelectEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            UpdateComboBoxEmployees();
         }
     }
 }

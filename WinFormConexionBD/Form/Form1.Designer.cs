@@ -42,7 +42,7 @@
             // 
             this.NewJobBtn.Location = new System.Drawing.Point(25, 27);
             this.NewJobBtn.Name = "NewJobBtn";
-            this.NewJobBtn.Size = new System.Drawing.Size(193, 23);
+            this.NewJobBtn.Size = new System.Drawing.Size(193, 32);
             this.NewJobBtn.TabIndex = 4;
             this.NewJobBtn.Text = "New Job";
             this.NewJobBtn.UseVisualStyleBackColor = true;
@@ -50,9 +50,9 @@
             // 
             // SelectJobBtn
             // 
-            this.SelectJobBtn.Location = new System.Drawing.Point(25, 56);
+            this.SelectJobBtn.Location = new System.Drawing.Point(25, 77);
             this.SelectJobBtn.Name = "SelectJobBtn";
-            this.SelectJobBtn.Size = new System.Drawing.Size(193, 23);
+            this.SelectJobBtn.Size = new System.Drawing.Size(193, 33);
             this.SelectJobBtn.TabIndex = 5;
             this.SelectJobBtn.Text = "Select jobs";
             this.SelectJobBtn.UseVisualStyleBackColor = true;
@@ -61,16 +61,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(25, 96);
+            this.comboBox1.Location = new System.Drawing.Point(25, 127);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(193, 24);
             this.comboBox1.TabIndex = 6;
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(25, 138);
+            this.UpdateBtn.Location = new System.Drawing.Point(25, 166);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(193, 23);
+            this.UpdateBtn.Size = new System.Drawing.Size(193, 35);
             this.UpdateBtn.TabIndex = 7;
             this.UpdateBtn.Text = "Update job";
             this.UpdateBtn.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // UpdateEmployeeBtn
             // 
-            this.UpdateEmployeeBtn.Location = new System.Drawing.Point(282, 138);
+            this.UpdateEmployeeBtn.Location = new System.Drawing.Point(282, 166);
             this.UpdateEmployeeBtn.Name = "UpdateEmployeeBtn";
-            this.UpdateEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.UpdateEmployeeBtn.Size = new System.Drawing.Size(193, 35);
             this.UpdateEmployeeBtn.TabIndex = 11;
             this.UpdateEmployeeBtn.Text = "Update employee";
             this.UpdateEmployeeBtn.UseVisualStyleBackColor = true;
@@ -88,25 +88,26 @@
             // comboBoxEmployees
             // 
             this.comboBoxEmployees.FormattingEnabled = true;
-            this.comboBoxEmployees.Location = new System.Drawing.Point(282, 96);
+            this.comboBoxEmployees.Location = new System.Drawing.Point(282, 127);
             this.comboBoxEmployees.Name = "comboBoxEmployees";
             this.comboBoxEmployees.Size = new System.Drawing.Size(193, 24);
             this.comboBoxEmployees.TabIndex = 10;
             // 
             // SelectEmployeeBtn
             // 
-            this.SelectEmployeeBtn.Location = new System.Drawing.Point(282, 56);
+            this.SelectEmployeeBtn.Location = new System.Drawing.Point(282, 77);
             this.SelectEmployeeBtn.Name = "SelectEmployeeBtn";
-            this.SelectEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.SelectEmployeeBtn.Size = new System.Drawing.Size(193, 33);
             this.SelectEmployeeBtn.TabIndex = 9;
             this.SelectEmployeeBtn.Text = "Select employees";
             this.SelectEmployeeBtn.UseVisualStyleBackColor = true;
+            this.SelectEmployeeBtn.Click += new System.EventHandler(this.SelectEmployeeBtn_Click);
             // 
             // NewEmployeeBtn
             // 
             this.NewEmployeeBtn.Location = new System.Drawing.Point(282, 27);
             this.NewEmployeeBtn.Name = "NewEmployeeBtn";
-            this.NewEmployeeBtn.Size = new System.Drawing.Size(193, 23);
+            this.NewEmployeeBtn.Size = new System.Drawing.Size(193, 32);
             this.NewEmployeeBtn.TabIndex = 8;
             this.NewEmployeeBtn.Text = "New Employee";
             this.NewEmployeeBtn.UseVisualStyleBackColor = true;
@@ -116,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 189);
+            this.ClientSize = new System.Drawing.Size(494, 219);
             this.Controls.Add(this.UpdateEmployeeBtn);
             this.Controls.Add(this.comboBoxEmployees);
             this.Controls.Add(this.SelectEmployeeBtn);
