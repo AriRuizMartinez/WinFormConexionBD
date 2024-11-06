@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 namespace WinFormConexionBD
 {
-    public class JobController
+    public class DAL_Job
     {
         ConexionBD conexionBD;
 
-        public JobController(ConexionBD conexionBD)
+        public DAL_Job()
         {
-            this.conexionBD = conexionBD;
+            this.conexionBD = new ConexionBD();
         }
 
-        public void InsertJob(Job job) 
+        public void InsertJob(Job job)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace WinFormConexionBD
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
 
             }
@@ -50,8 +50,8 @@ namespace WinFormConexionBD
         }
 
         public static object NullToDBNull(object val)
-        { 
-            if(val == null)
+        {
+            if (val == null)
                 return DBNull.Value;
             else
                 return val;
@@ -92,7 +92,7 @@ namespace WinFormConexionBD
             {
                 return null;
             }
-            finally 
+            finally
             {
                 conexionBD.Close();
             }

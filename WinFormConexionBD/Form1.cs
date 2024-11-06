@@ -14,12 +14,12 @@ namespace WinFormConexionBD
     {
         ConexionBD conexionBD;
         NewJobForm newJobForm;
-        JobController jobController;
+        DAL_Job DAL_Job;
         public Form1()
         {
             InitializeComponent();
             conexionBD = new ConexionBD();
-            jobController = new JobController(conexionBD);
+            DAL_Job = new DAL_Job();
             OpenBtn.Enabled = true;
             CloseBtn.Enabled = false;
         }
@@ -52,20 +52,29 @@ namespace WinFormConexionBD
         {
             newJobForm = new NewJobForm();
             if (newJobForm.ShowDialog() == DialogResult.OK)
-                jobController.InsertJob(newJobForm.JobProperty);
+                DAL_Job.InsertJob(newJobForm.JobProperty);
         }
 
         private void SelectBtn_Click(object sender, EventArgs e)
         {
-            List<Job> jobs = jobController.SelectJobs();
-            comboBox1.DataSource = jobs;
+            UpdateComboBox();
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             newJobForm = new NewJobForm((Job)comboBox1.SelectedItem);
             if (newJobForm.ShowDialog() == DialogResult.OK)
-                jobController.UpdateJob(newJobForm.JobProperty);
+            {
+                DAL_Job.UpdateJob(newJobForm.JobProperty);
+                UpdateComboBox();
+            }
+
+
+        }
+        private void UpdateComboBox()
+        {
+            List<Job> jobs = DAL_Job.SelectJobs();
+            comboBox1.DataSource = jobs;
         }
     }
 }
