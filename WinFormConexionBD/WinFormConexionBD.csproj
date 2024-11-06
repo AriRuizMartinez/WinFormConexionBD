@@ -47,26 +47,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
-    <Compile Include="DAL_Job.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="DAL\DAL_Job.cs" />
+    <Compile Include="Form\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Job.cs" />
-    <Compile Include="NewJobForm.cs">
+    <Compile Include="Model\Job.cs" />
+    <Compile Include="Form\NewJobForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewJobForm.Designer.cs">
+    <Compile Include="Form\NewJobForm.Designer.cs">
       <DependentUpon>NewJobForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewJobForm.resx">
+    <EmbeddedResource Include="Form\NewJobForm.resx">
       <DependentUpon>NewJobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
