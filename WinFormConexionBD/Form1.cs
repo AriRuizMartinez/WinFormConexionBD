@@ -12,40 +12,12 @@ namespace WinFormConexionBD
 {
     public partial class Form1 : Form
     {
-        ConexionBD conexionBD;
         NewJobForm newJobForm;
         DAL_Job DAL_Job;
         public Form1()
         {
             InitializeComponent();
-            conexionBD = new ConexionBD();
             DAL_Job = new DAL_Job();
-            OpenBtn.Enabled = true;
-            CloseBtn.Enabled = false;
-        }
-
-        private void OpenBtn_Click(object sender, EventArgs e)
-        {
-            if (conexionBD.Open())
-            {
-                label1.Text = "Opened";
-                OpenBtn.Enabled = false;
-                CloseBtn.Enabled = true;
-            }
-            else
-                MessageBox.Show("Ha habido un problema.");
-        }
-
-        private void CloseBtn_Click(object sender, EventArgs e)
-        {
-            if (conexionBD.Close())
-            {
-                label1.Text = "Closed";
-                OpenBtn.Enabled = true;
-                CloseBtn.Enabled = false;
-            }
-            else
-                MessageBox.Show("Ha habido un problema.");
         }
 
         private void NewJobBtn_Click(object sender, EventArgs e)
