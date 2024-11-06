@@ -84,9 +84,9 @@ namespace WinFormConexionBD
                 return;
 
             if (employee != null)
-                employee = new Employee(employee.Id, textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
+                employee = new Employee(employee.Id, string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
             else
-                employee = new Employee(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
+                employee = new Employee(string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

@@ -7,24 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormConexionBD.DAL;
 
 namespace WinFormConexionBD
 {
     public partial class Form1 : Form
     {
         NewJobForm newJobForm;
+        NewEmployeeForm newEmployeeForm;
         DAL_Job DAL_Job;
+        DAL_Employee DAL_Employee;
         public Form1()
         {
             InitializeComponent();
             DAL_Job = new DAL_Job();
+            DAL_Employee = new DAL_Employee();
         }
 
         private void NewJobBtn_Click(object sender, EventArgs e)
         {
             newJobForm = new NewJobForm();
             if (newJobForm.ShowDialog() == DialogResult.OK)
+            {
                 DAL_Job.InsertJob(newJobForm.JobProperty);
+                UpdateComboBox();
+            }
         }
 
         private void SelectBtn_Click(object sender, EventArgs e)
@@ -47,6 +54,16 @@ namespace WinFormConexionBD
         {
             List<Job> jobs = DAL_Job.SelectJobs();
             comboBox1.DataSource = jobs;
+        }
+
+        private void NewEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            newEmployeeForm = new NewEmployeeForm(DAL_Job.SelectJobs());
+            if (newEmployeeForm.ShowDialog() == DialogResult.OK)
+            {
+                DAL_Employee.InsertEmployee(newEmployeeForm.EmployeeProperty);
+
+            }
         }
     }
 }

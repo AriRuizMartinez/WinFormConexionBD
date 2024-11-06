@@ -33,7 +33,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.UpdateEmployeeBtn = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxEmployees = new System.Windows.Forms.ComboBox();
             this.SelectEmployeeBtn = new System.Windows.Forms.Button();
             this.NewEmployeeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -85,13 +85,13 @@
             this.UpdateEmployeeBtn.Text = "Update employee";
             this.UpdateEmployeeBtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // comboBoxEmployees
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(282, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(193, 24);
-            this.comboBox2.TabIndex = 10;
+            this.comboBoxEmployees.FormattingEnabled = true;
+            this.comboBoxEmployees.Location = new System.Drawing.Point(282, 96);
+            this.comboBoxEmployees.Name = "comboBoxEmployees";
+            this.comboBoxEmployees.Size = new System.Drawing.Size(193, 24);
+            this.comboBoxEmployees.TabIndex = 10;
             // 
             // SelectEmployeeBtn
             // 
@@ -110,6 +110,7 @@
             this.NewEmployeeBtn.TabIndex = 8;
             this.NewEmployeeBtn.Text = "New Employee";
             this.NewEmployeeBtn.UseVisualStyleBackColor = true;
+            this.NewEmployeeBtn.Click += new System.EventHandler(this.NewEmployeeBtn_Click);
             // 
             // Form1
             // 
@@ -117,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 189);
             this.Controls.Add(this.UpdateEmployeeBtn);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBoxEmployees);
             this.Controls.Add(this.SelectEmployeeBtn);
             this.Controls.Add(this.NewEmployeeBtn);
             this.Controls.Add(this.UpdateBtn);
@@ -136,7 +137,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button UpdateEmployeeBtn;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxEmployees;
         private System.Windows.Forms.Button SelectEmployeeBtn;
         private System.Windows.Forms.Button NewEmployeeBtn;
     }

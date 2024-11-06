@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="DAL\DAL_Employee.cs" />
     <Compile Include="DAL\DAL_Job.cs" />
     <Compile Include="Form\Form1.cs">
       <SubType>Form</SubType>
