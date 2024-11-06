@@ -44,6 +44,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.comboBoxManager = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,7 +168,7 @@
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(16, 240);
+            this.AddBtn.Location = new System.Drawing.Point(15, 306);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(302, 23);
             this.AddBtn.TabIndex = 14;
@@ -174,7 +178,7 @@
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(15, 278);
+            this.CancelBtn.Location = new System.Drawing.Point(14, 344);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(302, 23);
             this.CancelBtn.TabIndex = 15;
@@ -182,11 +186,49 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
+            // comboBoxManager
+            // 
+            this.comboBoxManager.FormattingEnabled = true;
+            this.comboBoxManager.Location = new System.Drawing.Point(119, 226);
+            this.comboBoxManager.Name = "comboBoxManager";
+            this.comboBoxManager.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxManager.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 226);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Manager:";
+            // 
+            // comboBoxDepartment
+            // 
+            this.comboBoxDepartment.FormattingEnabled = true;
+            this.comboBoxDepartment.Location = new System.Drawing.Point(119, 264);
+            this.comboBoxDepartment.Name = "comboBoxDepartment";
+            this.comboBoxDepartment.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxDepartment.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 264);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 16);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Department:";
+            // 
             // NewEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 318);
+            this.ClientSize = new System.Drawing.Size(331, 392);
+            this.Controls.Add(this.comboBoxDepartment);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBoxManager);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.comboBox1);
@@ -229,5 +271,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.ComboBox comboBoxManager;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBoxDepartment;
+        private System.Windows.Forms.Label label9;
     }
 }

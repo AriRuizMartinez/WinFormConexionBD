@@ -18,11 +18,13 @@ namespace WinFormConexionBD
         NewEmployeeForm newEmployeeForm;
         DAL_Job dal_job;
         DAL_Employee dal_employee;
+        DAL_Department dal_department;
         public Form1()
         {
             InitializeComponent();
             dal_job = new DAL_Job();
             dal_employee = new DAL_Employee();
+            dal_department = new DAL_Department();
         }
 
         private void NewJobBtn_Click(object sender, EventArgs e)
@@ -59,13 +61,13 @@ namespace WinFormConexionBD
 
         private void UpdateComboBoxEmployees()
         {
-            List<Employee> employees = dal_employee.SelectEmployees(dal_job);
+            List<Employee> employees = dal_employee.SelectEmployees(dal_job, dal_department);
             comboBoxEmployees.DataSource = employees;
         }
 
         private void NewEmployeeBtn_Click(object sender, EventArgs e)
         {
-            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs());
+            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs(), dal_employee.SelectEmployees(dal_job, dal_department), new List<Department>());
             if (newEmployeeForm.ShowDialog() == DialogResult.OK)
             {
                 dal_employee.InsertEmployee(newEmployeeForm.EmployeeProperty);

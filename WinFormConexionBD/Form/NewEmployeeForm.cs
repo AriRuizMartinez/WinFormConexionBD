@@ -16,16 +16,20 @@ namespace WinFormConexionBD
     {
         private Employee employee;
         public Employee EmployeeProperty { get { return employee; } }
-        public NewEmployeeForm(List<Job> jobs)
+        public NewEmployeeForm(List<Job> jobs, List<Employee> employees, List<Department> departments)
         {
             InitializeComponent();
             comboBox1.DataSource = jobs;
+            comboBoxManager.DataSource = employees;
+            comboBoxDepartment.DataSource = departments;
         }
 
-        public NewEmployeeForm(List<Job> jobs, Employee employee)
+        public NewEmployeeForm(List<Job> jobs, List<Employee> employees, List<Department> departments, Employee employee)
         {
             InitializeComponent();
             comboBox1.DataSource = jobs;
+            comboBoxManager.DataSource = employees;
+            comboBoxDepartment.DataSource = departments;
             textBoxFirstName.Text = employee.First_name;
             textBoxLastName.Text = employee.Last_name;
             textBoxEmail.Text = employee.Email;
@@ -84,9 +88,9 @@ namespace WinFormConexionBD
                 return;
 
             if (employee != null)
-                employee = new Employee(employee.Id, string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
+                employee = new Employee(employee.Id, string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value, (Employee) comboBoxManager.SelectedItem, (Department) comboBoxDepartment.SelectedItem);
             else
-                employee = new Employee(string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value);
+                employee = new Employee(string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value, (Employee)comboBoxManager.SelectedItem, (Department)comboBoxDepartment.SelectedItem);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

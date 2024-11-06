@@ -32,7 +32,13 @@ namespace WinFormConexionBD.Model
         private decimal salary;
         public decimal Salary { get { return salary; } }
 
-        public Employee(int id, string first_name, string last_name, string email, string phone_number, DateTime hire_date, Job job, decimal salary)
+        private Employee manager;
+        public Employee Manager { get { return manager; } }
+
+        private Department department;
+        public Department DepartmentProperty { get { return department; } }
+
+        public Employee(int id, string first_name, string last_name, string email, string phone_number, DateTime hire_date, Job job, decimal salary, Employee manager, Department department)
         {
             this.id = id;
             this.first_name = first_name;
@@ -42,9 +48,11 @@ namespace WinFormConexionBD.Model
             this.hire_date = hire_date;
             this.job = job;
             this.salary = salary;
+            this.department = department;
+            this.manager = manager;
         }
 
-        public Employee(string first_name, string last_name, string email, string phone_number, DateTime hire_date, Job job, decimal salary)
+        public Employee(string first_name, string last_name, string email, string phone_number, DateTime hire_date, Job job, decimal salary, Employee manager, Department department)
         {
             this.first_name = first_name;
             this.last_name = last_name;
@@ -53,6 +61,8 @@ namespace WinFormConexionBD.Model
             this.hire_date = hire_date;
             this.job = job;
             this.salary = salary;
+            this.department = department;
+            this.manager = manager;
         }
 
         public override string ToString()
