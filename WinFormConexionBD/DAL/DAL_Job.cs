@@ -22,10 +22,7 @@ namespace WinFormConexionBD
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return;
-                }
 
                 string query = "INSERT INTO jobs(job_title, min_salary, max_salary) " +
                     "VALUES (@title, @min, @max);" +
@@ -65,10 +62,7 @@ namespace WinFormConexionBD
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return null;
-                }
 
                 List<Job> jobs = new List<Job>();
 
@@ -114,10 +108,7 @@ namespace WinFormConexionBD
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return null;
-                }
 
                 string query = "SELECT * FROM jobs WHERE job_id = " + id + ";";
                 SqlCommand command = new SqlCommand(query, conexionBD.Conexion);
@@ -149,15 +140,12 @@ namespace WinFormConexionBD
             }
         }
 
-        internal void UpdateJob(Job job)
+        public void UpdateJob(Job job)
         {
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return;
-                }
 
                 string query = "UPDATE jobs SET job_title = @title, min_salary = @min, max_salary = @max WHERE job_id = @id;";
                 using (SqlCommand command = new SqlCommand(query, conexionBD.Conexion))

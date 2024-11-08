@@ -25,6 +25,8 @@ namespace WinFormConexionBD
             dal_job = new DAL_Job();
             dal_employee = new DAL_Employee();
             dal_department = new DAL_Department();
+            UpdateBtn.Enabled = false;
+            UpdateEmployeeBtn.Enabled = false;
         }
 
         private void NewJobBtn_Click(object sender, EventArgs e)
@@ -78,6 +80,42 @@ namespace WinFormConexionBD
         private void SelectEmployeeBtn_Click(object sender, EventArgs e)
         {
             UpdateComboBoxEmployees();
+        }
+
+        private void UpdateEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs(), dal_employee.SelectEmployees(), new List<Department>(), (Employee) comboBoxEmployees.SelectedItem);
+            if (newEmployeeForm.ShowDialog() == DialogResult.OK)
+            {
+                dal_employee.UpdateEmployee(newEmployeeForm.EmployeeProperty);
+                UpdateComboBoxEmployees();
+            }
+        }
+
+        private void comboBoxEmployees_TextChanged(object sender, EventArgs e)
+        {
+            if(comboBoxEmployees.SelectedItem == null || comboBoxEmployees.SelectedItem.ToString() != comboBoxEmployees.Text)
+                UpdateEmployeeBtn.Enabled = false;
+            else
+                UpdateEmployeeBtn.Enabled = true;
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedItem == null || comboBox1.SelectedItem.ToString() != comboBox1.Text)
+                UpdateBtn.Enabled = false;
+            else
+                UpdateBtn.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var data = from emp in dc.employees
+                       where emp.first_name == "Steven"
+                       select emp;
+
+            comboBoxEmployees.DataSource = data;
         }
     }
 }

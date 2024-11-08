@@ -36,6 +36,7 @@
             this.comboBoxEmployees = new System.Windows.Forms.ComboBox();
             this.SelectEmployeeBtn = new System.Windows.Forms.Button();
             this.NewEmployeeBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewJobBtn
@@ -65,6 +66,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(193, 24);
             this.comboBox1.TabIndex = 6;
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // UpdateBtn
             // 
@@ -84,6 +86,7 @@
             this.UpdateEmployeeBtn.TabIndex = 11;
             this.UpdateEmployeeBtn.Text = "Update employee";
             this.UpdateEmployeeBtn.UseVisualStyleBackColor = true;
+            this.UpdateEmployeeBtn.Click += new System.EventHandler(this.UpdateEmployeeBtn_Click);
             // 
             // comboBoxEmployees
             // 
@@ -92,6 +95,7 @@
             this.comboBoxEmployees.Name = "comboBoxEmployees";
             this.comboBoxEmployees.Size = new System.Drawing.Size(193, 24);
             this.comboBoxEmployees.TabIndex = 10;
+            this.comboBoxEmployees.TextChanged += new System.EventHandler(this.comboBoxEmployees_TextChanged);
             // 
             // SelectEmployeeBtn
             // 
@@ -113,11 +117,22 @@
             this.NewEmployeeBtn.UseVisualStyleBackColor = true;
             this.NewEmployeeBtn.Click += new System.EventHandler(this.NewEmployeeBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(325, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 219);
+            this.ClientSize = new System.Drawing.Size(494, 328);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.UpdateEmployeeBtn);
             this.Controls.Add(this.comboBoxEmployees);
             this.Controls.Add(this.SelectEmployeeBtn);
@@ -141,6 +156,7 @@
         private System.Windows.Forms.ComboBox comboBoxEmployees;
         private System.Windows.Forms.Button SelectEmployeeBtn;
         private System.Windows.Forms.Button NewEmployeeBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

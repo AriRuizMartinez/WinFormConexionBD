@@ -31,13 +31,10 @@ namespace WinFormConexionBD.DAL
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return;
-                }
 
                 string query = "INSERT INTO employees(first_name, last_name, email, phone_number, hire_date, job_id, salary, manager_id, department_id) " +
-                    "VALUES (@firstName, @lastName, @email, @phone, @hireDate, @jobId, @salary, @manager, @department);" +
+                    "VALUES (@firstName, @lastName, @email, @phone, @hireDate, @jobId, @salary, @managerId, @departmentId);" +
                     "SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, conexionBD.Conexion))
@@ -49,8 +46,8 @@ namespace WinFormConexionBD.DAL
                     command.Parameters.AddWithValue("@hireDate", employee.Hire_date);
                     command.Parameters.AddWithValue("@jobId", employee.JobId);
                     command.Parameters.AddWithValue("@salary", employee.Salary);
-                    command.Parameters.AddWithValue("@manager", NullToDBNull(employee.ManagerId));
-                    command.Parameters.AddWithValue("@department", NullToDBNull(employee.DepartmentId));
+                    command.Parameters.AddWithValue("@managerId", NullToDBNull(employee.ManagerId));
+                    command.Parameters.AddWithValue("@departmentId", NullToDBNull(employee.DepartmentId));
 
                     decimal result = (decimal)command.ExecuteScalar();
                     employee.Id = Convert.ToInt32(result);
@@ -71,10 +68,7 @@ namespace WinFormConexionBD.DAL
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return null;
-                }
 
                 List<Employee> employees = new List<Employee>();
 
@@ -130,10 +124,7 @@ namespace WinFormConexionBD.DAL
             try
             {
                 if (!conexionBD.Open())
-                {
-                    MessageBox.Show("Ha habido un problema.");
                     return null;
-                }
 
                 string query = "SELECT * FROM employees WHERE employee_id = " + id + ";";
                 SqlCommand command = new SqlCommand(query, conexionBD.Conexion);
@@ -174,5 +165,39 @@ namespace WinFormConexionBD.DAL
                 conexionBD.Close();
             }
         }
+        public void UpdateEmployee(Employee employee)
+        {
+            try
+            {
+                if (!conexionBD.Open())
+                    return;
+
+                string query = "UPDATE employees SET first_name = @firstName, last_name = @lastName, email = @email, phone_number = @phone, hire_date = @hireDate, job_id = @jobId, salary= @salary, manager_id = @managerId, department_id = @departmentId WHERE employee_id = @id;";
+                using (SqlCommand command = new SqlCommand(query, conexionBD.Conexion))
+                {
+                    command.Parameters.AddWithValue("@id", employee.Id);
+                    command.Parameters.AddWithValue("@firstName", NullToDBNull(employee.First_name));
+                    command.Parameters.AddWithValue("@lastName", employee.Last_name);
+                    command.Parameters.AddWithValue("@email", employee.Email);
+                    command.Parameters.AddWithValue("@phone", NullToDBNull(employee.Phone_number));
+                    command.Parameters.AddWithValue("@hireDate", employee.Hire_date);
+                    command.Parameters.AddWithValue("@jobId", employee.JobId);
+                    command.Parameters.AddWithValue("@salary", employee.Salary);
+                    command.Parameters.AddWithValue("@managerId", NullToDBNull(employee.ManagerId));
+                    command.Parameters.AddWithValue("@departmentId", NullToDBNull(employee.DepartmentId));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
     }
+
 }
