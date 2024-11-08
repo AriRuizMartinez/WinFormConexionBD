@@ -108,7 +108,7 @@ namespace WinFormConexionBD
                 UpdateBtn.Enabled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             var data = from emp in dc.employees
@@ -134,6 +134,6 @@ namespace WinFormConexionBD
             dc.employees.InsertOnSubmit(newOne);
 
             dc.SubmitChanges();
-        }
+        }*/
     }
 }

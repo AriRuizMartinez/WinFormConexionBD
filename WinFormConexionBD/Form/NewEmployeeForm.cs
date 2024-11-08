@@ -36,20 +36,20 @@ namespace WinFormConexionBD
             textBoxPhoneNumber.Text = employee.Phone_number;
             dateTimePicker1.Value = employee.Hire_date;
             comboBox1.SelectedItem = employee.JobProperty;
-            UpdateMinimumMaximum();
+            UpdateMinimumMaximum(employee.JobProperty);
             numericUpDown1.Value = employee.Salary;
             AddBtn.Text = "Update";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateMinimumMaximum();
+            UpdateMinimumMaximum(((Job)comboBox1.SelectedItem));
         }
 
-        private void UpdateMinimumMaximum()
+        private void UpdateMinimumMaximum(Job job)
         {
-            numericUpDown1.Minimum = ((Job)comboBox1.SelectedItem).MinSalary ?? 0;
-            numericUpDown1.Maximum = ((Job)comboBox1.SelectedItem).MaxSalary ?? decimal.MaxValue;
+            numericUpDown1.Minimum = job.MinSalary ?? 0;
+            numericUpDown1.Maximum = job.MaxSalary ?? decimal.MaxValue;
         }
 
         private bool Validar()
