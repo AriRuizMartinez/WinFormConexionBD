@@ -121,7 +121,16 @@ namespace WinFormConexionBD
 
             comboBoxEmployees.DataSource = data;
 
-            theOne.first_name = "*" + theOne.first_name;
+            //theOne.first_name = "*" + theOne.first_name;
+            employees newOne = new employees();
+
+            newOne.first_name = "Pepe";
+            newOne.last_name = "Garcia";
+            newOne.email = "emilio";
+            newOne.job_id = 1;
+            newOne.hire_date = DateTime.Now;
+            dc.employees.InsertOnSubmit(newOne);
+
             dc.SubmitChanges();
         }
     }
