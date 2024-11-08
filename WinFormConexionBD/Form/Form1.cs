@@ -115,11 +115,13 @@ namespace WinFormConexionBD
                        where emp.first_name.Contains("S")
                        select emp;
 
+            var data2 = dc.employees.Where(x => x.first_name.Contains("T"));
+
             employees theOne = data.FirstOrDefault();
             //employees theOne = data.SingleOrDefault();
             button1.Text = theOne.ToString();
 
-            comboBoxEmployees.DataSource = data;
+            comboBoxEmployees.DataSource = data2;
 
             //theOne.first_name = "*" + theOne.first_name;
             employees newOne = new employees();
