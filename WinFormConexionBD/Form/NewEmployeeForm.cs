@@ -88,9 +88,28 @@ namespace WinFormConexionBD
                 return;
 
             if (employee != null)
-                employee = new Employee(employee.Id, string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value, (Employee) comboBoxManager.SelectedItem, (Department) comboBoxDepartment.SelectedItem);
+                employee = new Employee(
+                    employee.Id, 
+                    string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, 
+                    textBoxLastName.Text, 
+                    textBoxEmail.Text, 
+                    string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, 
+                    dateTimePicker1.Value, 
+                    ((Job) comboBox1.SelectedItem).Id, 
+                    numericUpDown1.Value, 
+                    ((Employee) comboBoxManager.SelectedItem)?.Id, 
+                    ((Department)comboBoxDepartment.SelectedItem)?.Id);
             else
-                employee = new Employee(string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, dateTimePicker1.Value, (Job) comboBox1.SelectedItem, numericUpDown1.Value, (Employee)comboBoxManager.SelectedItem, (Department)comboBoxDepartment.SelectedItem);
+                employee = new Employee(
+                    string.IsNullOrWhiteSpace(textBoxFirstName.Text) ? null : textBoxFirstName.Text, 
+                    textBoxLastName.Text, 
+                    textBoxEmail.Text, 
+                    string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) ? null : textBoxPhoneNumber.Text, 
+                    dateTimePicker1.Value,
+                    ((Job)comboBox1.SelectedItem).Id, 
+                    numericUpDown1.Value, 
+                    ((Employee)comboBoxManager.SelectedItem)?.Id, 
+                    ((Department)comboBoxDepartment.SelectedItem)?.Id);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

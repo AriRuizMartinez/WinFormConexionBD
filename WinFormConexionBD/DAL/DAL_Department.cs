@@ -10,13 +10,14 @@ namespace WinFormConexionBD.DAL
 {
     public class DAL_Department
     {
-
-        public Department SelectDepartment(int id)
+        public static Department XSelectDepartmentById(int id)
         {
-            if(id == -1)
-                return null;
-
-            MessageBox.Show("Not implemented yet");
+            DAL_Department department = new DAL_Department();
+            return department.SelectDepartmentById(id);
+        }
+        public Department SelectDepartmentById(int id)
+        {
+            Console.WriteLine("Not implemented yet");
             return null;
         }
     }

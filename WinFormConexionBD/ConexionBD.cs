@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace WinFormConexionBD
 {
@@ -35,6 +36,7 @@ namespace WinFormConexionBD
             }
             catch (Exception ex) 
             {
+                MessageBox.Show("Error: " + ex);
                 return false;
             }
         }
@@ -48,6 +50,7 @@ namespace WinFormConexionBD
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
                 return false;
             }
         }

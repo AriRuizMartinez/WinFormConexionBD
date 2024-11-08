@@ -61,13 +61,13 @@ namespace WinFormConexionBD
 
         private void UpdateComboBoxEmployees()
         {
-            List<Employee> employees = dal_employee.SelectEmployees(dal_job, dal_department);
+            List<Employee> employees = dal_employee.SelectEmployees();
             comboBoxEmployees.DataSource = employees;
         }
 
         private void NewEmployeeBtn_Click(object sender, EventArgs e)
         {
-            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs(), dal_employee.SelectEmployees(dal_job, dal_department), new List<Department>());
+            newEmployeeForm = new NewEmployeeForm(dal_job.SelectJobs(), dal_employee.SelectEmployees(), new List<Department>());
             if (newEmployeeForm.ShowDialog() == DialogResult.OK)
             {
                 dal_employee.InsertEmployee(newEmployeeForm.EmployeeProperty);

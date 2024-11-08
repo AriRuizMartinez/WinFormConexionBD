@@ -36,7 +36,7 @@ namespace WinFormConexionBD.DAL
                     return;
                 }
 
-                string query = "INSERT INTO employees(first_name, last_name, email, phone_number, hire_date, employee_id, salary, manager_id, department_id) " +
+                string query = "INSERT INTO employees(first_name, last_name, email, phone_number, hire_date, job_id, salary, manager_id, department_id) " +
                     "VALUES (@firstName, @lastName, @email, @phone, @hireDate, @jobId, @salary, @manager, @department);" +
                     "SELECT SCOPE_IDENTITY();";
 
@@ -47,16 +47,10 @@ namespace WinFormConexionBD.DAL
                     command.Parameters.AddWithValue("@email", employee.Email);
                     command.Parameters.AddWithValue("@phone", NullToDBNull(employee.Phone_number));
                     command.Parameters.AddWithValue("@hireDate", employee.Hire_date);
-                    command.Parameters.AddWithValue("@jobId", employee.JobProperty.Id);
+                    command.Parameters.AddWithValue("@jobId", employee.JobId);
                     command.Parameters.AddWithValue("@salary", employee.Salary);
-                    if (employee.Manager != null)
-                        command.Parameters.AddWithValue("@manager", employee.Manager.Id);
-                    else
-                        command.Parameters.AddWithValue("@manager", NullToDBNull(employee.Manager));
-                    if(employee.DepartmentProperty != null)
-                        command.Parameters.AddWithValue("@department", employee.DepartmentProperty.Id);
-                    else
-                        command.Parameters.AddWithValue("@department", NullToDBNull(employee.DepartmentProperty));
+                    command.Parameters.AddWithValue("@manager", NullToDBNull(employee.ManagerId));
+                    command.Parameters.AddWithValue("@department", NullToDBNull(employee.DepartmentId));
 
                     decimal result = (decimal)command.ExecuteScalar();
                     employee.Id = Convert.ToInt32(result);
@@ -64,7 +58,7 @@ namespace WinFormConexionBD.DAL
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Error: " + ex);
             }
             finally
             {
@@ -72,7 +66,7 @@ namespace WinFormConexionBD.DAL
             }
         }
 
-        public List<Employee> SelectEmployees(DAL_Job dal_job, DAL_Department dal_department)
+        public List<Employee> SelectEmployees()
         {
             try
             {
@@ -99,11 +93,14 @@ namespace WinFormConexionBD.DAL
                     DateTime hireDate = reader.GetDateTime(5);
                     int jobID = reader.GetInt32(6);
                     decimal salary = reader.GetDecimal(7);
-                    int managerId = reader.IsDBNull(8) ? -1 : reader.GetInt32(8);
-                    int departmentId = reader.IsDBNull(9) ? -1 : reader.GetInt32(9);
+                    int? managerId = reader.IsDBNull(8) ? -1 : reader.GetInt32(8);
+                    int? departmentId = reader.IsDBNull(9) ? -1 : reader.GetInt32(9);
+                    if (managerId == -1)
+                        managerId = null;
+                    if (departmentId == -1)
+                        departmentId = null;
 
-                    //Cuando busca al manager cierra el reader y por lo tanto no puede leer la siguiente linia
-                    Employee employee = new Employee(employeeId, firstName, lastName, email, phoneNumber, hireDate, dal_job.SelectJob(jobID), salary, SelectEmployee(dal_job, dal_department, managerId), dal_department.SelectDepartment(departmentId));
+                    Employee employee = new Employee(employeeId, firstName, lastName, email, phoneNumber, hireDate, jobID, salary, managerId, departmentId);
                     employees.Add(employee);
                 }
                 reader.Close();
@@ -121,10 +118,15 @@ namespace WinFormConexionBD.DAL
             }
         }
 
-        public Employee SelectEmployee(DAL_Job dal_job, DAL_Department dal_department, int id)
+        public static Employee XSelectEmployeeById(int id)
         {
-            if (id == -1)
-                return null;
+            DAL_Employee dalEmployee = new DAL_Employee();
+            return dalEmployee.SelectEmployeeById(id);
+
+        }
+
+        public Employee SelectEmployeeById(int id)
+        {
             try
             {
                 if (!conexionBD.Open())
@@ -150,16 +152,21 @@ namespace WinFormConexionBD.DAL
                     DateTime hireDate = reader.GetDateTime(5);
                     int jobID = reader.GetInt32(6);
                     decimal salary = reader.GetDecimal(7);
-                    int managerId = reader.IsDBNull(8) ? -1 : reader.GetInt32(8);
-                    int departmentId = reader.IsDBNull(9) ? -1 : reader.GetInt32(9);
+                    int? managerId = reader.IsDBNull(8) ? -1 : reader.GetInt32(8);
+                    int? departmentId = reader.IsDBNull(9) ? -1 : reader.GetInt32(9);
+                    if(managerId == -1)
+                        managerId = null;
+                    if(departmentId == -1)
+                        departmentId = null;
 
-                    employee = new Employee(employeeId, firstName, lastName, email, phoneNumber, hireDate, dal_job.SelectJob(jobID), salary, SelectEmployee(dal_job, dal_department, managerId), dal_department.SelectDepartment(departmentId));
+                    employee = new Employee(employeeId, firstName, lastName, email, phoneNumber, hireDate, jobID, salary, managerId, departmentId);
                 }
                 reader.Close();
                 return employee;
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
                 return null;
             }
             finally

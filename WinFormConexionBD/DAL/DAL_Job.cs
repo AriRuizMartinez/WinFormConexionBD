@@ -93,6 +93,7 @@ namespace WinFormConexionBD
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
                 return null;
             }
             finally
@@ -102,7 +103,13 @@ namespace WinFormConexionBD
 
         }
 
-        public Job SelectJob(int id)
+        public static Job XSelectJobById(int id)
+        {
+            DAL_Job dalJob = new DAL_Job();
+            return dalJob.SelectJobById(id);
+        }
+
+        public Job SelectJobById(int id)
         {
             try
             {
@@ -133,6 +140,7 @@ namespace WinFormConexionBD
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
                 return null;
             }
             finally
@@ -164,6 +172,7 @@ namespace WinFormConexionBD
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
             }
             finally
             {
