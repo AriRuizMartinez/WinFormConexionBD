@@ -115,6 +115,10 @@ namespace WinFormConexionBD
                        where emp.first_name.Contains("S")
                        select emp;
 
+            employees theOne = data.FirstOrDefault();
+            //employees theOne = data.SingleOrDefault();
+            button1.Text = theOne.ToString();
+
             comboBoxEmployees.DataSource = data;
         }
     }
