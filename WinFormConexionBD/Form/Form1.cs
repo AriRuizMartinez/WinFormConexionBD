@@ -120,6 +120,9 @@ namespace WinFormConexionBD
             button1.Text = theOne.ToString();
 
             comboBoxEmployees.DataSource = data;
+
+            theOne.first_name = "*" + theOne.first_name;
+            dc.SubmitChanges();
         }
     }
 }
