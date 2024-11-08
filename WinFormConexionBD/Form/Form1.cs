@@ -112,7 +112,7 @@ namespace WinFormConexionBD
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             var data = from emp in dc.employees
-                       where emp.first_name == "Steven"
+                       where emp.first_name.Contains("S")
                        select emp;
 
             comboBoxEmployees.DataSource = data;
