@@ -50,7 +50,9 @@
     <Compile Include="ConexionBD.cs" />
     <Compile Include="DAL\DAL_Department.cs" />
     <Compile Include="DAL\DAL_Employee.cs" />
+    <Compile Include="DAL\DAL_EmployeeLinQ.cs" />
     <Compile Include="DAL\DAL_Job.cs" />
+    <Compile Include="DAL\DAL_JobLinQ.cs" />
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -16,13 +16,13 @@ namespace WinFormConexionBD
     {
         NewJobForm newJobForm;
         NewEmployeeForm newEmployeeForm;
-        DAL_Job dal_job;
+        DAL_JobLinQ dal_job;
         DAL_Employee dal_employee;
         DAL_Department dal_department;
         public Form1()
         {
             InitializeComponent();
-            dal_job = new DAL_Job();
+            dal_job = new DAL_JobLinQ();
             dal_employee = new DAL_Employee();
             dal_department = new DAL_Department();
             UpdateBtn.Enabled = false;
@@ -46,18 +46,16 @@ namespace WinFormConexionBD
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            newJobForm = new NewJobForm((Job)comboBox1.SelectedItem);
+            newJobForm = new NewJobForm((jobs)comboBox1.SelectedItem);
             if (newJobForm.ShowDialog() == DialogResult.OK)
             {
                 dal_job.UpdateJob(newJobForm.JobProperty);
                 UpdateComboBox();
             }
-
-
         }
         private void UpdateComboBox()
         {
-            List<Job> jobs = dal_job.SelectJobs();
+            List<jobs> jobs = dal_job.SelectJobs();
             comboBox1.DataSource = jobs;
         }
 

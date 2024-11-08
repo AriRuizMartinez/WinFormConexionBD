@@ -16,7 +16,7 @@ namespace WinFormConexionBD
     {
         private Employee employee;
         public Employee EmployeeProperty { get { return employee; } }
-        public NewEmployeeForm(List<Job> jobs, List<Employee> employees, List<Department> departments)
+        public NewEmployeeForm(List<jobs> jobs, List<Employee> employees, List<Department> departments)
         {
             InitializeComponent();
             comboBox1.DataSource = jobs;
@@ -24,7 +24,7 @@ namespace WinFormConexionBD
             comboBoxDepartment.DataSource = departments;
         }
 
-        public NewEmployeeForm(List<Job> jobs, List<Employee> employees, List<Department> departments, Employee employee)
+        public NewEmployeeForm(List<jobs> jobs, List<Employee> employees, List<Department> departments, Employee employee)
         {
             InitializeComponent();
             comboBox1.DataSource = jobs;

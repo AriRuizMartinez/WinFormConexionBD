@@ -13,20 +13,20 @@ namespace WinFormConexionBD
 {
     public partial class NewJobForm : Form
     {
-        private Job job;
-        public Job JobProperty { get { return job; } }
+        private jobs job;
+        public jobs JobProperty { get { return job; } }
         public NewJobForm()
         {
             InitializeComponent();
         }
 
-        public NewJobForm(Job job)
+        public NewJobForm(jobs job)
         {
             InitializeComponent();
             this.job = job;
-            textBox1.Text = job.JobTitle;
-            MinSalatyTextBox.Text = job.MinSalary + "";
-            MaxSalaryTextBox.Text = job.MaxSalary + "";
+            textBox1.Text = job.job_title;
+            MinSalatyTextBox.Text = job.min_salary + "";
+            MaxSalaryTextBox.Text = job.max_salary + "";
             AddBtn.Text = "Update";
         }
 
@@ -37,9 +37,18 @@ namespace WinFormConexionBD
                 return;
 
             if(job != null)
-                job = new Job(job.Id, textBox1.Text, GetDecimalValue(MinSalatyTextBox.Text), GetDecimalValue(MaxSalaryTextBox.Text));
-            else                
-                job = new Job(textBox1.Text, GetDecimalValue(MinSalatyTextBox.Text), GetDecimalValue(MaxSalaryTextBox.Text));
+            {
+                job.job_title = textBox1.Text;
+                job.min_salary = GetDecimalValue(MinSalatyTextBox.Text);
+                job.max_salary = GetDecimalValue(MaxSalaryTextBox.Text);
+            }
+            else
+            {
+                job = new jobs();
+                job.job_title = textBox1.Text;
+                job.min_salary = GetDecimalValue(MinSalatyTextBox.Text);
+                job.max_salary = GetDecimalValue(MaxSalaryTextBox.Text);
+            }        
 
             this.DialogResult = DialogResult.OK;
             this.Close();

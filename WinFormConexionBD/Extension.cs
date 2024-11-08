@@ -13,4 +13,12 @@ namespace WinFormConexionBD
             return first_name + " " + last_name;
         }
     }
+
+    public partial class jobs
+    {
+        public override string ToString() 
+        {
+            return job_title;
+        }
+    }
 }
